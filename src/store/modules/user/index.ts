@@ -9,8 +9,6 @@ import { RootState } from '@/store'
 import { state } from './state'
 import { mutations, Mutations } from './mutations'
 import {actions, Actions} from "./actions"
-
-
 import type { UserState } from './state'
 
 export { UserState }

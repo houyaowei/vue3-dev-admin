@@ -12,7 +12,7 @@
   </el-form>
 </template>
 
-<script>
+<script lang="ts">
 import {ref, defineComponent, reactive,toRefs } from "vue"
 import { useStore } from '@/store'
 import { UserActionTypes } from '@/store/modules/user/action-types'
@@ -38,7 +38,7 @@ export default defineComponent({
 
     const methods = reactive({
       onSubmit: ()=> {
-        (formRef.value).validate(async(valid) => {
+        (formRef.value as any).validate(async(valid: boolean) => {
           if (valid) {
             await store.dispatch(UserActionTypes.ACTION_LOGIN, state.formData)
           } else {

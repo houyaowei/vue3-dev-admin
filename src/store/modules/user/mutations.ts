@@ -10,6 +10,7 @@ export type Mutations<S= UserState> = {
 //需要实现type中的所有方法
 export const mutations: MutationTree<UserState> & Mutations= {
   [UserMutationTypes.USER_LOGIN](state: UserState) {
+    console.log("-----------")
     state.name = "houyw"
   },
   [UserMutationTypes.USER_LOGOUT](state: UserState) {

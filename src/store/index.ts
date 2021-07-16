@@ -1,6 +1,4 @@
-console.log("store/index")
 import { createStore,createLogger } from "vuex";
-
 import { store as user, UserStore, UserState } from '@/store/modules/user'
 
 //有新增store的需要在这里新增
