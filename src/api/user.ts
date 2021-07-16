@@ -1,7 +1,7 @@
 import { RequestParams, ContentType, Method } from 'axios-mapper'
-import { RootModel} from '@/model/rootModel'
-import { UserInfoModel, Users } from '@/model/userModel'
-import https from '@/utils/https'
+import { RootModel} from '@/api/model/RootModel'
+import { UserInfoModel, Users } from '@/api/model/userModel'
+import https from '@/utils/http/https'
 import { LoginModel } from '@/views/model/loginModel'
 
 export const loginRequest = (userInfo: RequestParams) => {

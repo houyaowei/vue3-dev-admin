@@ -1,7 +1,10 @@
 import { ActionTree, ActionContext } from "vuex";
 import { UserActionTypes } from "./action-types";
 import { Mutations} from "./mutations"
-import { UserState,RootState } from "./state"
+import { RootState, useStore } from '@/store'
+import { UserState, state } from "./state"
+import { loginRequest, logoutRequest } from '@/api/user'
+import { UserReqModel}  from "@/api/model/userModel"
 
 type AugmentedActionContext = {
   commit<K extends keyof Mutations>(
@@ -13,8 +16,9 @@ type AugmentedActionContext = {
 export interface Actions {
   [UserActionTypes.ACTION_LOGIN](
     { commit }: AugmentedActionContext,
-    userInfo: { username: string, password: string }
+    userInfo: UserReqModel
   ): void
+
   [UserActionTypes.ACTION_LOGIN_OUT](
     { commit }: AugmentedActionContext
   ): void
@@ -23,18 +27,18 @@ export interface Actions {
 export const actions: ActionTree<UserState, RootState> & Actions = {
   async [UserActionTypes.ACTION_LOGIN](
     { commit }: AugmentedActionContext,
-    userInfo: { username: string, password: string }
+    userInfo: UserReqModel
   ) {
-    let { username, password } = userInfo
-    username = username.trim()
-    // await loginRequest({ username, password }).then(async(res) => {
-    //   if (res?.code === 0 && res.data.accessToken) {
-    //     setToken(res.data.accessToken)
-    //     commit(UserMutationTypes.SET_TOKEN, res.data.accessToken)
-    //   }
-    // }).catch((err) => {
-    //   console.log(err)
-    // })
+    let { name, password } = userInfo
+    await loginRequest({ name, password }).then(async(res) => {
+      if (res?.code === 0 && res.data.accessToken) {
+        console.log("login success")
+        // setToken(res.data.accessToken)
+        // commit(UserMutationTypes.SET_TOKEN, res.data.accessToken)
+      }
+    }).catch((err) => {
+      console.log(err)
+    })
   },
 
   [UserActionTypes.ACTION_LOGIN_OUT]({ commit }: AugmentedActionContext) {

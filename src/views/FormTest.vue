@@ -40,7 +40,7 @@ export default defineComponent({
       onSubmit: ()=> {
         (formRef.value).validate(async(valid) => {
           if (valid) {
-            await store.dispatch(UserActionTypes.ACTION_LOGIN, state.loginForm)
+            await store.dispatch(UserActionTypes.ACTION_LOGIN, state.formData)
           } else {
             return false
           }

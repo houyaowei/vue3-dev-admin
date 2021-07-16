@@ -5,7 +5,10 @@ export interface UserInfoModel {
   name: string
   roles: string[]
 }
-
+export interface UserReqModel {
+  name: string
+  password: string
+}
 export interface Users {
   items: any
 }

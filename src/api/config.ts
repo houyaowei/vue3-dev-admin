@@ -22,7 +22,7 @@ export interface NetworkConfig{
 }
 
 const networkConfig: NetworkConfig = {
-  host: process.env.VUE_APP_BASE_API,
+  host: import.meta.env.VITE_APP_BASE_API,
   timeout: 10000,
   loading: false,
   header: _header
