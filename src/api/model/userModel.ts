@@ -1,14 +1,11 @@
-export interface UserParam {
-  userName: string;
-  userId: string | number
-}
-export interface RoleInfo {
-  roleName: string;
-  value: string;
+export interface UserInfoModel {
+  id: number
+  username: string
+  password: string
+  name: string
+  roles: string[]
 }
 
-export interface LoginResultModel {
-  userId: string | number;
-  token: string;
-  role: RoleInfo;
+export interface Users {
+  items: any
 }

@@ -1,5 +1,5 @@
 <template>
-  <el-form :inline="true" :model="formData" :rules="formRules" class="demo-form-inline" size="small">
+  <el-form  ref="formRef" :inline="true" :model="formData" :rules="formRules" class="demo-form-inline" size="small">
     <el-form-item label="用户" prop="name">
       <el-input v-model="formData.name" placeholder="用户名"></el-input>
     </el-form-item>
@@ -13,10 +13,18 @@
 </template>
 
 <script>
-import {ref, defineComponent, reactive,toRefs} from "vue"
+import {ref, defineComponent, reactive,toRefs } from "vue"
+import { useStore } from '@/store'
+import { UserActionTypes } from '@/store/modules/user/action-types'
+
 export default defineComponent({
   name: "FormTest",
   setup(){
+    //form表单引用
+    let formRef = ref(null);
+    //实例话store
+    const store = useStore()
+
     let state = reactive({
       formData: {
         name: "",
@@ -28,12 +36,22 @@ export default defineComponent({
       }
     })
 
-    async function onSubmit(){
-      console.log("form test")
-    }
+    const methods = reactive({
+      onSubmit: ()=> {
+        (formRef.value).validate(async(valid) => {
+          if (valid) {
+            await store.dispatch(UserActionTypes.ACTION_LOGIN, state.loginForm)
+          } else {
+            return false
+          }
+        })
+      }
+    });
+
     return {
+      formRef,
       ...toRefs(state),
-      onSubmit
+      ...toRefs(methods)
     }
   }
 })
