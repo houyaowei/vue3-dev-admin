@@ -31,7 +31,7 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
   ) {
     let { name, password } = userInfo
     await loginRequest({ name, password }).then(async(res) => {
-      if (res?.code === 0 && res.data.accessToken) {
+      if (res.code === 0 && res.data.accessToken) {
         console.log("login success")
         // setToken(res.data.accessToken)
         // commit(UserMutationTypes.SET_TOKEN, res.data.accessToken)
