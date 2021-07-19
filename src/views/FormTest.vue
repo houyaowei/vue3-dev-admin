@@ -1,5 +1,5 @@
 <template>
-  <el-form  ref="formRef" :inline="true" :model="formData" :rules="formRules" class="demo-form-inline" size="small">
+  <el-form  ref="formRef" :inline="true" :model="formData" :rules="formRules">
     <el-form-item label="用户" prop="name">
       <el-input v-model="formData.name" placeholder="用户名"></el-input>
     </el-form-item>
@@ -24,7 +24,6 @@ export default defineComponent({
     let formRef = ref(null);
     //实例话store
     const store = useStore()
-
     let state = reactive({
       formData: {
         name: "",

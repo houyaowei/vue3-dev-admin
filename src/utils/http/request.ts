@@ -3,7 +3,7 @@ import { RootModel } from "@/api/model/RootModel"
 import networkConfig from '@/api/config'
 import { useStore } from '@/store'
 
-// const https = (hasToken: Boolean = true) => {
+// const http = (hasToken: Boolean = true) => {
 //   const config: HttpClientConfig = {
 //     baseURL: networkConfig.host,
 //     headers: {

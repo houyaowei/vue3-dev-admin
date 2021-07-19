@@ -1,5 +1,6 @@
 import { ActionTree, ActionContext } from "vuex";
 import { UserActionTypes } from "./action-types";
+import { UserMutationTypes } from "./mutation-types"
 import { Mutations} from "./mutations"
 import { RootState, useStore } from '@/store'
 import { UserState, state } from "./state"
@@ -30,11 +31,12 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
     userInfo: UserReqModel
   ) {
     let { name, password } = userInfo
+
     await loginRequest({ name, password }).then(async(res) => {
-      if (res.code === 0 && res.data.accessToken) {
+      // code 自定义
+      if (res.code == 0) {
         console.log("login success")
-        // setToken(res.data.accessToken)
-        // commit(UserMutationTypes.SET_TOKEN, res.data.accessToken)
+        commit(UserMutationTypes.USER_LOGIN, res)
       }
     }).catch((err) => {
       console.log(err)

@@ -16,7 +16,12 @@ export default defineConfig({
   base: "/",
   server: {
     port: 3001,
-    open: true
+    open: true,
+    proxy: {
+      "/user/login" : {
+        target: "http://localhost:8081"
+      }
+    }
   },
   plugins: [vue()]
 })
