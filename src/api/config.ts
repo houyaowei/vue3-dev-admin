@@ -17,12 +17,12 @@ const _header: Headers = {
 export interface NetworkConfig{
   host?: string
   timeout?: number
-  loading?: false
+  loading?: boolean
   header?: {}
 }
 
 const networkConfig: NetworkConfig = {
-  host: import.meta.env.VITE_APP_BASE_API,
+  host: import.meta.env.VITE_APP_BASE_API as string,
   timeout: 10000,
   loading: false,
   header: _header

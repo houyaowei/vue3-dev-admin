@@ -32,9 +32,9 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
   ) {
     let { name, password } = userInfo
 
-    await loginRequest({ name, password }).then(async(res) => {
+    await loginRequest({ name, password }).then(async (res) => {
       // code 自定义
-      if (res.code == 0) {
+      if (res!.code == 0) {
         console.log("login success")
         commit(UserMutationTypes.USER_LOGIN, res)
       }

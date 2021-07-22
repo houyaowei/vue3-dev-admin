@@ -20,15 +20,15 @@ const config: HttpClientConfig = {
 };
 const http = new HttpClient(config);
 
-http.httpClient.interceptors.request.use(function (config) {
+http.httpClient.interceptors.request.use(config => {
   return config;
-}, function (error) {
+}, error => {
   return Promise.reject(error);
 });
 
-http.httpClient.interceptors.response.use(function (response: RootModel) {
+http.httpClient.interceptors.response.use( (response) => {
   return response;
-}, function (error) {
+},  error => {
   return Promise.reject(error);
 });
 
