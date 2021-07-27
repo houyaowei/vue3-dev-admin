@@ -7,6 +7,7 @@ export type Mutations<S= UserState> = {
   //TODO,如果返回的是类型列表，需要重新定义interface，不要用any
   [UserMutationTypes.USER_LOGIN](state: S, obj: any): void
   [UserMutationTypes.USER_LOGOUT](state: S): void
+  [UserMutationTypes.SET_TOKEN](state: S,token: string): void
 }
 //需要实现type中的所有方法
 export const mutations: MutationTree<UserState> & Mutations= {
@@ -17,4 +18,8 @@ export const mutations: MutationTree<UserState> & Mutations= {
   [UserMutationTypes.USER_LOGOUT](state: UserState) {
     state.name = ""
   },
+  [UserMutationTypes.SET_TOKEN](state: S, token: string): void {
+    //TODO, set token
+    state.token="token"
+  }
 }

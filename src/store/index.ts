@@ -7,7 +7,7 @@ export interface RootState {
 }
 
 export type Store = UserStore<Pick<RootState, 'user'>>
-console.log(import.meta.env.VITE_NODE_ENV)
+// console.log(import.meta.env.VITE_NODE_ENV)
 
 const debug = import.meta.env.VITE_NODE_ENV !== 'development'
 const plugins = debug ? [createLogger({})] : []

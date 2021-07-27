@@ -34,9 +34,10 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
 
     await loginRequest({ name, password }).then(async (res) => {
       // code 自定义
-      if (res!.code == 0) {
+      if (res?.code == 0 && res.data.accessToken) {
         console.log("login success")
         commit(UserMutationTypes.USER_LOGIN, res)
+        commit(UserMutationTypes.SET_TOKEN, res.data.accessToken)
       }
     }).catch((err) => {
       console.log(err)
