@@ -6,6 +6,7 @@ import 'element-plus/lib/theme-chalk/index.css'
 import router from './router/index'
 import { store } from './store'
 
+
 async function bootstrap(){
   const app  =  createApp(App);
   //注册路由

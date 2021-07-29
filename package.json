@@ -5,6 +5,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
+  "license": "MIT",
   "dependencies": {
     "@types/lodash-es": "^4.17.4",
     "axios": "^0.21.1",
